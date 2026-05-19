@@ -85,7 +85,7 @@ export default function Contact() {
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-black rounded-[3rem] p-10 md:p-16 text-white"
+            className="bg-black rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-16 text-white"
           >
             <h2 className="text-3xl font-black mb-8 italic">SEND A MESSAGE.</h2>
             <div className="space-y-6">

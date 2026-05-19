@@ -118,23 +118,23 @@ export default function Home() {
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 w-full sm:w-auto px-4 sm:px-0 justify-center items-center">
               {/* Explore Menu — animated orange & black pill */}
               <Link
                 to="/menu"
                 className="
                   group relative inline-flex items-center justify-center gap-2
                   w-full sm:w-auto max-w-[10rem] mx-auto sm:mx-0
-                  px-4 py-3 text-sm font-black tracking-widest uppercase
+                  px-3 sm:px-4 py-3 text-xs sm:text-sm font-black tracking-wide sm:tracking-widest uppercase
                   rounded-xl border border-primary bg-black
                   text-primary hover:bg-primary hover:text-black
                   transition-all duration-300 overflow-hidden shadow-xl
                 "
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center gap-1.5">
                   EXPLORE MENU
                   <ArrowRight
-                    size={6}
+                    size={10}
                     className="group-hover:translate-x-1 transition-transform duration-300"
                   />
                 </span>
@@ -146,16 +146,16 @@ export default function Home() {
               </Link>
 
               {/* Delivery buttons */}
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2.5 w-full sm:w-auto max-w-[10rem] mx-auto sm:mx-0">
                 <motion.a
                   href="https://deliveraddis.com/restaurants/chanoly-noodles"
                   target="_blank"
                   rel="noreferrer"
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.96 }}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-black rounded-xl text-sm shadow-xl"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-primary text-white font-black rounded-xl text-xs sm:text-sm shadow-xl"
                 >
-                  <ShoppingCart size={16} />
+                  <ShoppingCart size={14} />
                   DeliverAddis
                 </motion.a>
                 <motion.a
@@ -164,9 +164,9 @@ export default function Home() {
                   rel="noreferrer"
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.96 }}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black border border-white/10 text-white font-black rounded-xl text-sm shadow-xl"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-black border border-white/10 text-white font-black rounded-xl text-xs sm:text-sm shadow-xl"
                 >
-                  <ShoppingCart size={16} />
+                  <ShoppingCart size={14} />
                   beU Delivery
                 </motion.a>
               </div>
@@ -378,32 +378,30 @@ export default function Home() {
               CRAVING A MEAL?
             </h2>
           </FadeUp>
-          <FadeUp delay={0.15}>
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <motion.a
-                href="https://deliveraddis.com/restaurants/chanoly-noodles"
-                target="_blank"
-                rel="noreferrer"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-4 px-8 py-5 bg-black text-white rounded-2xl font-black text-xl shadow-2xl"
-              >
-                <ShoppingCart size={24} />
-                DELIVERADDIS
-              </motion.a>
-              <motion.a
-                href="https://beudelivery.com/"
-                target="_blank"
-                rel="noreferrer"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center justify-center gap-4 px-8 py-5 bg-white text-black rounded-2xl font-black text-xl shadow-2xl"
-              >
-                <ShoppingCart size={24} />
-                BEU DELIVERY
-              </motion.a>
-            </div>
-          </FadeUp>
+          <div className="flex flex-col sm:flex-row justify-center gap-6 px-4">
+            <motion.a
+              href="https://deliveraddis.com/restaurants/chanoly-noodles"
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-4 sm:py-5 bg-black text-white rounded-2xl font-black text-lg sm:text-xl shadow-2xl w-full sm:w-auto max-w-[18rem] sm:max-w-none mx-auto sm:mx-0"
+            >
+              <ShoppingCart size={20} />
+              DELIVERADDIS
+            </motion.a>
+            <motion.a
+              href="https://beudelivery.com/"
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-4 sm:py-5 bg-white text-black rounded-2xl font-black text-lg sm:text-xl shadow-2xl w-full sm:w-auto max-w-[18rem] sm:max-w-none mx-auto sm:mx-0"
+            >
+              <ShoppingCart size={20} />
+              BEU DELIVERY
+            </motion.a>
+          </div>
         </div>
 
         {/* Scrolling background text */}

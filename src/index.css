@@ -42,3 +42,60 @@
 .order-button-gradient {
   background: linear-gradient(135deg, #F47321 0%, #FF8A3D 100%);
 }
+
+/* ════════════════════════════════════════════════
+   MOBILE RESPONSIVENESS OVERRIDES (768px & below)
+   ════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll layout breaks */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Make containers fluid with max-width limit constraints */
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Scale down oversized h1 and h2 headings gracefully */
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 6vw, 3.25rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Ensure all images and svg elements scale down dynamically */
+  img, svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Stack side-by-side elements vertically on mobile */
+  .grid-cols-2, 
+  .grid-cols-3, 
+  .grid-cols-4 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  /* General mobile utility overrides */
+  .py-32 {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+  .mt-32 {
+    margin-top: 5rem !important;
+  }
+  .gap-20 {
+    gap: 3rem !important;
+  }
+}

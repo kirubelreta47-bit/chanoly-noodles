@@ -158,14 +158,14 @@ export default function Menu() {
                   <h3 className="text-xl sm:text-2xl font-black mb-2 group-hover:text-primary transition-colors leading-tight">{item.name}</h3>
                   <p className="text-gray-500 text-xs sm:text-sm leading-relaxed mb-4 italic line-clamp-3 sm:line-clamp-none">{item.description}</p>
                 </div>
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-auto pt-4 border-t border-gray-50">
                   <span className="text-lg sm:text-xl font-black text-black">{item.price}</span>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 w-full sm:w-auto">
                     <a 
                       href="https://deliveraddis.com/restaurants/chanoly-noodles" 
                       target="_blank" 
                       rel="noreferrer" 
-                      className="text-xs font-bold px-3 py-2 bg-gray-100 rounded-lg hover:bg-primary hover:text-white transition-colors"
+                      className="flex-1 sm:flex-none text-center text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-2 bg-gray-100 rounded-lg hover:bg-primary hover:text-white transition-colors"
                     >
                       DeliverAddis
                     </a>
@@ -173,7 +173,7 @@ export default function Menu() {
                       href="https://beudelivery.com/" 
                       target="_blank" 
                       rel="noreferrer" 
-                      className="text-xs font-bold px-3 py-2 bg-gray-100 rounded-lg hover:bg-black hover:text-white transition-colors"
+                      className="flex-1 sm:flex-none text-center text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-2 bg-gray-100 rounded-lg hover:bg-black hover:text-white transition-colors"
                     >
                       beU
                     </a>
