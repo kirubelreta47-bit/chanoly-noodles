@@ -1,0 +1,6 @@
+{
+  "name": "Chanoly Noodles",
+  "description": "Authentic noodle restaurant showcasing a diverse menu and online ordering integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
