@@ -24,7 +24,11 @@ export default function Navbar() {
   const navScrolled = scrolled || !isHome;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navScrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-4"}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      navScrolled 
+        ? "bg-transparent md:bg-white/95 md:backdrop-blur-md md:shadow-sm py-2" 
+        : "bg-transparent py-4"
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center gap-2">
@@ -77,7 +81,11 @@ export default function Navbar() {
 
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)} 
-              className={`p-2 rounded-lg ${navScrolled ? "bg-gray-100 text-black" : "bg-white/20 text-white backdrop-blur-sm"}`}
+              className={`p-2 rounded-lg transition-colors ${
+                navScrolled 
+                  ? "bg-black/5 text-black hover:bg-black/10" 
+                  : "bg-white/20 text-white backdrop-blur-sm hover:bg-white/30"
+              }`}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -93,11 +101,17 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-50 bg-white flex flex-col p-8 md:hidden"
+            className="fixed inset-0 z-50 bg-neutral-950 text-white flex flex-col p-8 md:hidden shadow-2xl"
           >
             <div className="flex justify-between items-center mb-12">
-              <span className="text-2xl font-black italic text-primary">CHANOLY</span>
-              <button onClick={() => setIsMenuOpen(false)} className="p-3 bg-gray-100 rounded-full">
+              <div className="flex flex-col">
+                <span className="text-2xl font-black tracking-tight text-white leading-none">CHANOLY</span>
+                <span className="text-[9px] font-bold text-primary tracking-[0.2em] leading-none uppercase mt-1">SMOOTHIE & NOODLES</span>
+              </div>
+              <button 
+                onClick={() => setIsMenuOpen(false)} 
+                className="p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors"
+              >
                 <X size={24} />
               </button>
             </div>
@@ -107,13 +121,13 @@ export default function Navbar() {
                 <Link
                   key={item}
                   to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                  className={`text-4xl font-black border-b border-gray-100 pb-4 ${
+                  className={`text-4xl font-display font-black tracking-tight border-b border-white/10 pb-4 transition-all duration-300 ${
                     location.pathname === (item === "Home" ? "/" : `/${item.toLowerCase()}`)
-                      ? "text-primary italic"
-                      : "text-black"
+                      ? "text-primary italic translate-x-2"
+                      : "text-white/80 hover:text-white"
                   }`}
                 >
-                  {item}
+                  {item === "Contact" ? "Contact Us" : item}
                 </Link>
               ))}
             </div>
@@ -124,7 +138,7 @@ export default function Navbar() {
                   href="https://deliveraddis.com/restaurants/chanoly-noodles" 
                   target="_blank" 
                   rel="noreferrer"
-                  className="w-full py-4 bg-primary text-white rounded-2xl text-center font-black text-lg flex items-center justify-center gap-3 shadow-lg"
+                  className="w-full py-4 bg-primary text-white rounded-2xl text-center font-black text-lg flex items-center justify-center gap-3 shadow-lg hover:bg-primary/95 transition-all"
                 >
                   <ShoppingCart size={24} />
                   DeliverAddis
@@ -133,7 +147,7 @@ export default function Navbar() {
                   href="https://beudelivery.com/" 
                   target="_blank" 
                   rel="noreferrer"
-                  className="w-full py-4 bg-black text-white rounded-2xl text-center font-black text-lg flex items-center justify-center gap-3 shadow-lg"
+                  className="w-full py-4 bg-white text-black rounded-2xl text-center font-black text-lg flex items-center justify-center gap-3 shadow-lg hover:bg-white/95 transition-all"
                 >
                   <ShoppingCart size={24} />
                   beU Delivery

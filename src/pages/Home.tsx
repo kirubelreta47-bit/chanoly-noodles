@@ -20,6 +20,68 @@ function FadeUp({ children, delay = 0, className = "" }) {
   );
 }
 
+/* ─── Slide in from right to left ─── */
+function SlideFromRight({ children, delay = 0, className = "" }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: false, margin: "-100px" });
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, x: 180 }}
+      animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 180 }}
+      transition={{ duration: 1.3, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/* ─── Smoothie Splashes Animating ─── */
+function SmoothieSplashes() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: false, margin: "-40px" });
+
+  const droplets = [
+    { id: 1, top: "-5%", left: "20%", size: "w-6 h-6", delay: 0.2, rotate: 180, x: -10, y: 280 },
+    { id: 2, top: "-15%", left: "45%", size: "w-8 h-8", delay: 0.5, rotate: 180, x: 0, y: 320 },
+    { id: 3, top: "-5%", left: "70%", size: "w-5 h-5", delay: 0.8, rotate: 180, x: 10, y: 290 },
+    { id: 4, top: "15%", left: "10%", size: "w-6 h-6", delay: 0.3, rotate: 180, x: -15, y: 240 },
+    { id: 5, top: "20%", left: "80%", size: "w-5 h-5", delay: 0.6, rotate: 180, x: 15, y: 260 },
+  ];
+
+  return (
+    <div ref={ref} className="absolute inset-0 pointer-events-none -z-10">
+      {droplets.map((drop) => (
+        <motion.div
+          key={drop.id}
+          className={`absolute ${drop.size} text-primary fill-current`}
+          style={{ top: drop.top, left: drop.left }}
+          initial={{ opacity: 0, scale: 0.3, x: 0, y: 0, rotate: 180 }}
+          animate={inView ? {
+            opacity: [0, 1, 1, 0],
+            scale: [0.3, 1, 1, 0.5],
+            x: drop.x,
+            y: drop.y,
+            rotate: drop.rotate
+          } : {}}
+          transition={{
+            duration: 1.8,
+            delay: drop.delay,
+            ease: "easeIn",
+            repeat: inView ? Infinity : 0,
+            repeatDelay: 2
+          }}
+        >
+          <svg viewBox="0 0 30 42" className="w-full h-full drop-shadow-[0_4px_10px_rgba(244,115,33,0.3)]">
+            <path d="M15 0 C25 18, 30 25, 30 32 A 15 15 0 0 1 0 32 C 0 25, 5 18, 15 0 Z" />
+          </svg>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   /* ── Parallax refs ── */
   const heroRef = useRef(null);
@@ -224,7 +286,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-20">
             {/* Image */}
-            <FadeUp className="lg:w-1/2 relative">
+            <FadeUp className="w-full max-w-[280px] sm:max-w-md lg:max-w-none mx-auto lg:w-1/2 relative">
               <div className="relative z-10">
                 <motion.div
                   whileHover={{ rotate: 0 }}
@@ -238,7 +300,7 @@ export default function Home() {
                     className="w-full h-full object-cover"
                   />
                 </motion.div>
-                <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary rounded-[3rem] -z-10 -rotate-6" />
+                <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary rounded-[3rem] -z-10 -rotate-6 hidden sm:block" />
               </div>
               {/* Badge */}
               <motion.div
@@ -308,7 +370,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row-reverse items-center gap-20">
             {/* Image */}
-            <FadeUp className="lg:w-1/2 relative">
+            <SlideFromRight className="w-full max-w-[280px] sm:max-w-md lg:max-w-none mx-auto lg:w-1/2 relative">
               <div className="relative z-10">
                 <motion.div
                   whileHover={{ rotate: 0 }}
@@ -323,9 +385,10 @@ export default function Home() {
                     referrerPolicy="no-referrer"
                   />
                 </motion.div>
-                <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-primary rounded-[3rem] -z-10 rotate-6" />
+                <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-primary rounded-[3rem] -z-10 rotate-6 hidden sm:block" />
+                <SmoothieSplashes />
               </div>
-            </FadeUp>
+            </SlideFromRight>
 
             {/* Copy */}
             <div className="lg:w-1/2">

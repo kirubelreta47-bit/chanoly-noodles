@@ -18,7 +18,7 @@ export default function Footer() {
               <a href="https://www.instagram.com/chanoly_noodle_official/" target="_blank" rel="noreferrer" className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition-all">
                 <Instagram size={18} />
               </a>
-              <a href="#" className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition-all">
+              <a href="https://web.facebook.com/p/Chanoly-Noodle-Official-61555720320412/?_rdc=1&_rdr" target="_blank" rel="noreferrer" className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition-all">
                 <Facebook size={18} />
               </a>
             </div>

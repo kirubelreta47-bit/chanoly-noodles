@@ -73,7 +73,7 @@ export default function Contact() {
               <a href="https://www.instagram.com/chanoly_noodle_official/" target="_blank" rel="noreferrer" className="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center hover:bg-primary transition-colors shadow-lg">
                 <Instagram size={24} />
               </a>
-              <a href="#" className="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center hover:bg-primary transition-colors shadow-lg">
+              <a href="https://web.facebook.com/p/Chanoly-Noodle-Official-61555720320412/?_rdc=1&_rdr" target="_blank" rel="noreferrer" className="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center hover:bg-primary transition-colors shadow-lg">
                 <Facebook size={24} />
               </a>
               <a href="#" className="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center hover:bg-primary transition-colors shadow-lg">
