@@ -135,15 +135,15 @@ export default function Navbar() {
               </button>
             </div>
             
-            <div className="flex flex-col space-y-6">
+            <div className="flex flex-col space-y-4">
               {["Home", "Menu", "Gallery", "Contact"].map((item) => (
                 <Link
                   key={item}
                   to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                  className={`text-4xl font-display font-black tracking-tight border-b border-white/5 pb-4 transition-all duration-300 ${
+                  className={`text-xl font-display font-bold uppercase tracking-wider border-b border-white/5 pb-3 transition-all duration-300 ${
                     location.pathname === (item === "Home" ? "/" : `/${item.toLowerCase()}`)
-                      ? "text-primary italic translate-x-3"
-                      : "text-white/80 hover:text-primary hover:translate-x-2"
+                      ? "text-primary italic translate-x-2"
+                      : "text-white/80 hover:text-primary hover:translate-x-1"
                   }`}
                 >
                   {item === "Contact" ? "Contact Us" : item}
