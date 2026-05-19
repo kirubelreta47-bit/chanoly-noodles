@@ -1,6 +1,6 @@
 
 import { ShoppingCart, Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import logoImg from '../public/logo/logo.png';
@@ -9,26 +9,56 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const [isVisible, setIsVisible] = useState(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    return isMobile ? (location.pathname === "/" && window.scrollY === 0) : true;
+  });
+  const checkVisibility = (pathname: string, scrollY: number) => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      if (pathname !== "/" || scrollY > 0) {
+        return false;
+      }
+    }
+    return true;
+  };
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsVisible(checkVisibility(location.pathname, currentScrollY));
+      setScrolled(currentScrollY > 20);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsVisible(checkVisibility(location.pathname, window.scrollY));
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [location.pathname]);
 
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsVisible(checkVisibility(location.pathname, window.scrollY));
   }, [location]);
 
   const isHome = location.pathname === "/";
   const navScrolled = scrolled || !isHome;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      navScrolled 
-        ? "bg-transparent md:bg-white/95 md:backdrop-blur-md md:shadow-sm py-2" 
-        : "bg-transparent py-4"
-    }`}>
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full md:translate-y-0"
+      } ${
+        navScrolled 
+          ? "bg-transparent md:bg-white/95 md:backdrop-blur-md md:shadow-sm py-2" 
+          : "bg-transparent py-4"
+      }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center gap-2">
@@ -76,22 +106,10 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex items-center gap-3">
 
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)} 
-              className={`p-2 rounded-lg transition-colors ${
-                navScrolled 
-                  ? "bg-black/5 text-black hover:bg-black/10" 
-                  : "bg-white/20 text-white backdrop-blur-sm hover:bg-white/30"
-              }`}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
         </div>
       </div>
+    </nav>
 
       {/* Mobile Navigation Overlay */}
       <AnimatePresence>
@@ -101,7 +119,8 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-50 bg-neutral-950 text-white flex flex-col p-8 md:hidden shadow-2xl"
+            className="fixed inset-0 z-50 text-white flex flex-col p-8 md:hidden shadow-2xl border-l-[6px] border-primary"
+            style={{ backgroundColor: "#0b0b0b" }}
           >
             <div className="flex justify-between items-center mb-12">
               <div className="flex flex-col">
@@ -110,7 +129,7 @@ export default function Navbar() {
               </div>
               <button 
                 onClick={() => setIsMenuOpen(false)} 
-                className="p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors"
+                className="p-3 bg-white/10 hover:bg-primary hover:text-white rounded-full transition-colors duration-300"
               >
                 <X size={24} />
               </button>
@@ -121,10 +140,10 @@ export default function Navbar() {
                 <Link
                   key={item}
                   to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                  className={`text-4xl font-display font-black tracking-tight border-b border-white/10 pb-4 transition-all duration-300 ${
+                  className={`text-4xl font-display font-black tracking-tight border-b border-white/5 pb-4 transition-all duration-300 ${
                     location.pathname === (item === "Home" ? "/" : `/${item.toLowerCase()}`)
-                      ? "text-primary italic translate-x-2"
-                      : "text-white/80 hover:text-white"
+                      ? "text-primary italic translate-x-3"
+                      : "text-white/80 hover:text-primary hover:translate-x-2"
                   }`}
                 >
                   {item === "Contact" ? "Contact Us" : item}
@@ -138,7 +157,7 @@ export default function Navbar() {
                   href="https://deliveraddis.com/restaurants/chanoly-noodles" 
                   target="_blank" 
                   rel="noreferrer"
-                  className="w-full py-4 bg-primary text-white rounded-2xl text-center font-black text-lg flex items-center justify-center gap-3 shadow-lg hover:bg-primary/95 transition-all"
+                  className="w-full py-4 bg-primary text-white rounded-2xl text-center font-black text-lg flex items-center justify-center gap-3 shadow-lg hover:bg-primary/90 hover:scale-[1.02] active:scale-95 transition-all"
                 >
                   <ShoppingCart size={24} />
                   DeliverAddis
@@ -147,7 +166,7 @@ export default function Navbar() {
                   href="https://beudelivery.com/" 
                   target="_blank" 
                   rel="noreferrer"
-                  className="w-full py-4 bg-white text-black rounded-2xl text-center font-black text-lg flex items-center justify-center gap-3 shadow-lg hover:bg-white/95 transition-all"
+                  className="w-full py-4 bg-white text-black rounded-2xl text-center font-black text-lg flex items-center justify-center gap-3 shadow-lg hover:bg-neutral-100 hover:scale-[1.02] active:scale-95 transition-all"
                 >
                   <ShoppingCart size={24} />
                   beU Delivery
@@ -157,6 +176,16 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+
+      {/* Floating Mobile Hamburger Menu Toggle */}
+      {!isMenuOpen && (
+        <button 
+          onClick={() => setIsMenuOpen(true)} 
+          className="md:hidden fixed top-5 right-5 z-[60] p-3 rounded-full bg-black/60 text-white backdrop-blur-md hover:bg-black/80 active:scale-95 transition-all shadow-lg border border-white/10"
+        >
+          <Menu size={22} />
+        </button>
+      )}
+    </>
   );
 }
