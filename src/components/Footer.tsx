@@ -6,8 +6,8 @@ export default function Footer() {
   return (
     <footer className="bg-black text-white pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap gap-x-4 gap-y-12 md:grid md:grid-cols-4 md:gap-12 mb-16">
-          <div className="w-full md:col-span-2">
+        <div className="footer-grid gap-x-8 gap-y-12 md:gap-12 mb-16">
+          <div className="col-span-2 md:col-span-2">
             <Link to="/" className="inline-block mb-6">
               <span className="text-3xl font-black italic">CHANOLY <span className="text-primary">SMOOTHIE & NOODLES.</span></span>
             </Link>
@@ -24,7 +24,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="w-[calc(50%-8px)] md:w-auto">
+          <div className="col-span-1">
             <h4 className="text-lg font-bold mb-6">QUICK LINKS</h4>
             <div className="flex flex-col space-y-4">
               <Link to="/" className="text-gray-400 hover:text-primary transition-colors">Home</Link>
@@ -34,7 +34,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="w-[calc(50%-8px)] md:w-auto">
+          <div className="col-span-1">
             <h4 className="text-lg font-bold mb-6">VISIT US</h4>
             <div className="flex flex-col space-y-4 text-gray-400">
               <div className="flex gap-3">
