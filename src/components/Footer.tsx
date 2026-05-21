@@ -4,11 +4,11 @@ import { Instagram, Facebook, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white pt-20 pb-10">
+    <footer className="bg-black text-white pt-10 md:pt-20 pb-6 md:pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="footer-grid gap-x-8 gap-y-12 md:gap-12 mb-16">
+        <div className="footer-grid gap-x-4 md:gap-x-8 gap-y-8 md:gap-y-12 mb-8 md:mb-16">
           <div className="col-span-2 md:col-span-2">
-            <Link to="/" className="inline-block mb-6">
+            <Link to="/" className="inline-block mb-4 md:mb-6">
               <span className="text-3xl font-black italic">CHANOLY <span className="text-primary">SMOOTHIE & NOODLES.</span></span>
             </Link>
             <p className="text-gray-400 max-w-sm mb-8 leading-relaxed">
@@ -25,8 +25,8 @@ export default function Footer() {
           </div>
 
           <div className="col-span-1">
-            <h4 className="footer-mobile-heading mb-6">QUICK LINKS</h4>
-            <div className="flex flex-col space-y-4 footer-mobile-text">
+            <h4 className="footer-mobile-heading mb-4 md:mb-6">QUICK LINKS</h4>
+ Sands            <div className="flex flex-col space-y-4 footer-mobile-text">
               <Link to="/" className="text-gray-400 hover:text-primary transition-colors">Home</Link>
               <Link to="/menu" className="text-gray-400 hover:text-primary transition-colors">Our Menu</Link>
               <Link to="/gallery" className="text-gray-400 hover:text-primary transition-colors">Gallery</Link>
@@ -35,8 +35,8 @@ export default function Footer() {
           </div>
 
           <div className="col-span-1">
-            <h4 className="footer-mobile-heading mb-6">VISIT US</h4>
-            <div className="flex flex-col space-y-4 text-gray-400 footer-mobile-text">
+            <h4 className="footer-mobile-heading mb-4 md:mb-6">VISIT US</h4>
+ Sands            <div className="flex flex-col space-y-4 text-gray-400 footer-mobile-text">
               <div className="flex gap-3">
                 <MapPin size={18} className="text-primary shrink-0" />
                 <span>Bole Road, behind Friendship Mall, Addis Ababa</span>
