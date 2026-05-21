@@ -25,8 +25,8 @@ export default function Footer() {
           </div>
 
           <div className="col-span-1">
-            <h4 className="text-lg font-bold mb-6">QUICK LINKS</h4>
-            <div className="flex flex-col space-y-4">
+            <h4 className="footer-mobile-heading mb-6">QUICK LINKS</h4>
+            <div className="flex flex-col space-y-4 footer-mobile-text">
               <Link to="/" className="text-gray-400 hover:text-primary transition-colors">Home</Link>
               <Link to="/menu" className="text-gray-400 hover:text-primary transition-colors">Our Menu</Link>
               <Link to="/gallery" className="text-gray-400 hover:text-primary transition-colors">Gallery</Link>
@@ -35,8 +35,8 @@ export default function Footer() {
           </div>
 
           <div className="col-span-1">
-            <h4 className="text-lg font-bold mb-6">VISIT US</h4>
-            <div className="flex flex-col space-y-4 text-gray-400">
+            <h4 className="footer-mobile-heading mb-6">VISIT US</h4>
+            <div className="flex flex-col space-y-4 text-gray-400 footer-mobile-text">
               <div className="flex gap-3">
                 <MapPin size={18} className="text-primary shrink-0" />
                 <span>Bole Road, behind Friendship Mall, Addis Ababa</span>
